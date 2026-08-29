@@ -16,9 +16,7 @@ export default function Generator() {
 
   return (
     <>
-      <div>
-        {result && <QRCodeSVG value={result} />}
-      </div>
+      <div>{result && <QRCodeSVG value={result} />}</div>
       <div className="input-group mt-3">
         <input
           type="search"
