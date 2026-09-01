@@ -1,5 +1,6 @@
 import { QRCodeSVG } from "qrcode.react";
 import { useState } from "react";
+import "./Generator.css";
 
 export default function Generator() {
   const [value, setValue] = useState("");
@@ -16,8 +17,10 @@ export default function Generator() {
 
   return (
     <>
-      <div>{result && <QRCodeSVG value={result} />}</div>
-      <div className="input-group mt-3">
+      <div>
+        {result && <QRCodeSVG value={result} className="mb-3" size={300} />}
+      </div>
+      <div className="input-group text-value">
         <input
           type="search"
           value={value}
