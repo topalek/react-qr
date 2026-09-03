@@ -1,4 +1,23 @@
 import { createRoot } from "react-dom/client";
-import Layout from "./Layout";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import Generator from "./Generator";
+import Scanner from "./Scanner";
 
-createRoot(document.getElementById("root")).render(<Layout />);
+let router = createBrowserRouter([
+  {
+    path: "/",
+    Component: () => <div>test</div>,
+  },
+  {
+    path: "/generate",
+    Component: Generator,
+  },
+  {
+    path: "/scan",
+    Component: Scanner,
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />,
+);
