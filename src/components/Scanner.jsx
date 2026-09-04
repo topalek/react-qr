@@ -1,11 +1,18 @@
 import { useState } from 'react'
 import './Generator.css'
 import { Scanner } from '@yudiel/react-qr-scanner'
+import { SCAN_DATA } from '../constants'
+// import { SCAN_DATA } from '../constants'
 
 export default function Scaner() {
     const [result, setResult] = useState(null)
     const handleScan = (result) => {
-        setResult(result[0]?.rawValue)
+        const val = result[0]?.rawValue
+        setResult(val)
+        const data = JSON.parse(localStorage.getItem(SCAN_DATA) || '[]')
+        const set = new Set(data)
+        set.add(val)
+        localStorage.setItem(SCAN_DATA, JSON.stringify(Array.from(set)))
     }
     const handleError = (error) => {
         console.error('Error: ', error)
