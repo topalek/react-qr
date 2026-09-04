@@ -1,56 +1,57 @@
-import { useState } from "react";
-import Generator from "./Generator";
-import Scanner from "./Scanner";
+import { Routes, Route } from 'react-router'
+import Generator from './Generator'
+import Scanner from './Scanner'
+import Navigation from './Navigation'
 
 export default function Layout() {
-  const [tabs, setTabs] = useState([
-    { id: 1, label: "QR-Code Генератор", active: true, component: Generator },
-    { id: 2, label: "Scanner", active: false, component: Scanner },
-    { id: 3, label: "Contacts", active: true, component: null },
-  ]);
+    const tabs = [
+        {
+            id: 1,
+            label: 'QR-Code Генератор',
+            path: '/generate',
+            component: Generator,
+        },
+        {
+            id: 2,
+            label: 'Scanner',
+            path: '/scan',
+            component: Scanner,
+        },
+        {
+            id: 3,
+            label: 'История сканирования',
+            path: '/scan-history',
+            component: () => <>История сканирования</>,
+        },
+        {
+            id: 4,
+            label: 'История генерировани',
+            path: '/generate-history',
+            component: () => <>История генерировани</>,
+        },
+    ]
 
-  const tabClickHandler = (tab) => {
-    setTabs(
-      tabs.map((t) => ({
-        ...t,
-        active: t.id === tab.id,
-      })),
-    );
-  };
-
-  return (
-    <div className="app">
-      <div className="container mt5">
-        <ul className="nav nav-tabs" id="myTab" role="tablist">
-          {tabs.map((tab) => (
-            <li className="nav-item" role="presentation" key={tab.id}>
-              <button
-                className={`nav-link ${tab.active ? "active" : ""}`}
-                type="button"
-                role="tab"
-                onClick={() => tabClickHandler(tab)}
-              >
-                {tab.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <div className="tab-content border">
-          {tabs.map((t) => (
-            <div
-              key={t.id}
-              className={`tab-pane fade p-4  ${t.active ? "show active" : ""}`}
-              role="tabpanel"
-              aria-labelledby="home-tab"
-              tabIndex="0"
-            >
-              <div className="container">
-                {t.active && t.component ? <t.component /> : ""}
-              </div>
+    return (
+        <div className="app">
+            <Navigation tabs={tabs} />
+            <div className="container">
+                <div className="tab-content border">
+                    <div className="p-4">
+                        <Routes>
+                            <Route path="/generate" element={<Generator />} />
+                            <Route path="/scan" element={<Scanner />} />
+                            <Route
+                                path="/scan-history"
+                                element={<>История сканирования</>}
+                            />
+                            <Route
+                                path="/generate-history"
+                                element={<>История генерировани</>}
+                            />
+                        </Routes>
+                    </div>
+                </div>
             </div>
-          ))}
         </div>
-      </div>
-    </div>
-  );
+    )
 }

@@ -5,8 +5,7 @@ import { Scanner } from "@yudiel/react-qr-scanner";
 export default function Scaner() {
   const [result, setResult] = useState(null);
   const handleScan = (result) => {
-    console.log("Scan rezult: ", result);
-    setResult(result[0].rawValue);
+    setResult(result[0]?.rawValue);
   };
   const handleError = (error) => {
     console.error("Error: ", error);
