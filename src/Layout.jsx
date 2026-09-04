@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router'
-import Generator from './Generator'
-import Scanner from './Scanner'
-import Navigation from './Navigation'
+import Generator from './components/Generator'
+import Scanner from './components/Scanner'
+import Navigation from './components/Navigation'
 
 export default function Layout() {
     const tabs = [
