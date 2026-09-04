@@ -1,20 +1,23 @@
 import { QRCodeSVG } from 'qrcode.react'
 import { useState } from 'react'
 import './Generator.css'
-import { SCAN_DATA } from '../constants'
+import { GENERATE_DATA } from '../constants'
 
 export default function Generator() {
     const [value, setValue] = useState('')
     const [result, setResult] = useState('')
 
-    console.log(SCAN_DATA)
     const handleChange = (e) => {
         setValue(e.target.value)
         setResult('') // Clear the result when the input changes
     }
     const handleClick = () => {
         setResult(value)
-        setValue('') // Clear the input field after generating the QR code
+        setValue('')
+        const data = JSON.parse(localStorage.getItem(GENERATE_DATA) || '[]')
+        const set = new Set(data)
+        set.add(value)
+        localStorage.setItem(GENERATE_DATA, JSON.stringify(Array.from(set)))
     }
 
     return (
