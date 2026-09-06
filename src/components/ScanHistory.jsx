@@ -3,8 +3,8 @@ import { SCAN_DATA } from '../constants'
 import { QRCodeSVG } from 'qrcode.react'
 
 export default function ScanHistory() {
-    const [scanned, setScanned] = useState(
-        () => JSON.parse(localStorage.getItem(SCAN_DATA) || '[]')
+    const [scanned, setScanned] = useState(() =>
+        JSON.parse(localStorage.getItem(SCAN_DATA) || '[]')
     )
     const clearHistory = () => {
         localStorage.removeItem(SCAN_DATA)
@@ -13,7 +13,7 @@ export default function ScanHistory() {
     return (
         <div className="history">
             <header>
-                <h3>История генераций</h3>
+                <h3>История сканирования</h3>
                 {scanned.length > 0 && (
                     <div onClick={clearHistory} className="clear">
                         <span title="Очистить историю">очистить</span>
