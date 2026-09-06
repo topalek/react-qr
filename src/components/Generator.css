@@ -1,7 +1,21 @@
 .text-value {
-  max-width: 600px;
+    max-width: 600px;
 }
 
 .scanner {
-  max-width: 600px;
+    max-width: 600px;
+}
+.history {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .clear {
+            padding: 0.25rem;
+            font-weight: 700;
+            color: rgb(126, 8, 8);
+            cursor: pointer;
+            font-style: italic;
+        }
+    }
 }

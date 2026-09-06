@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router'
 import Generator from './components/Generator'
 import Scanner from './components/Scanner'
 import Navigation from './components/Navigation'
+import GenerateHistory from './components/GenerateHistory'
+import ScanHistory from './components/ScanHistory'
 
 export default function Layout() {
     const tabs = [
@@ -21,13 +23,13 @@ export default function Layout() {
             id: 3,
             label: 'История сканирования',
             path: '/scan-history',
-            component: () => <>История сканирования</>,
+            component: () => ScanHistory,
         },
         {
             id: 4,
             label: 'История генерировани',
             path: '/generate-history',
-            component: () => <>История генерировани</>,
+            component: () => GenerateHistory,
         },
     ]
 
@@ -42,11 +44,11 @@ export default function Layout() {
                             <Route path="/scan" element={<Scanner />} />
                             <Route
                                 path="/scan-history"
-                                element={<>История сканирования</>}
+                                element={<ScanHistory />}
                             />
                             <Route
                                 path="/generate-history"
-                                element={<>История генерировани</>}
+                                element={<GenerateHistory />}
                             />
                         </Routes>
                     </div>

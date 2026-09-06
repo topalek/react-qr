@@ -1,5 +1,4 @@
-import { Link } from 'react-router'
-// import { useState } from 'react'
+import { NavLink } from 'react-router'
 
 export default function Navigation({ tabs }) {
     return (
@@ -7,9 +6,14 @@ export default function Navigation({ tabs }) {
             <ul className="nav nav-tabs" id="myTab" role="tablist">
                 {tabs.map((tab) => (
                     <li className="nav-item" role="presentation" key={tab.id}>
-                        <Link className="nav-link" to={tab.path}>
+                        <NavLink
+                            className={({ isActive }) =>
+                                `nav-link ${isActive ? 'active' : ''}`
+                            }
+                            to={tab.path}
+                        >
                             {tab.label}
-                        </Link>
+                        </NavLink>
                     </li>
                 ))}
             </ul>
