@@ -10,25 +10,25 @@ export default function Layout() {
         {
             id: 1,
             label: 'QR-Code Генератор',
-            path: '/generate',
+            path: '/react-qr/generate',
             component: Generator,
         },
         {
             id: 2,
             label: 'Scanner',
-            path: '/scan',
+            path: '/react-qr/scan',
             component: Scanner,
         },
         {
             id: 3,
             label: 'История сканирования',
-            path: '/scan-history',
+            path: '/react-qr/scan-history',
             component: () => ScanHistory,
         },
         {
             id: 4,
-            label: 'История генерировани',
-            path: '/generate-history',
+            label: 'История генерирования',
+            path: '/react-qr/generate-history',
             component: () => GenerateHistory,
         },
     ]
@@ -40,14 +40,20 @@ export default function Layout() {
                 <div className="tab-content border">
                     <div className="p-4">
                         <Routes>
-                            <Route path="/generate" element={<Generator />} />
-                            <Route path="/scan" element={<Scanner />} />
                             <Route
-                                path="/scan-history"
+                                path="/react-qr/generate"
+                                element={<Generator />}
+                            />
+                            <Route
+                                path="/react-qr/scan"
+                                element={<Scanner />}
+                            />
+                            <Route
+                                path="/react-qr/scan-history"
                                 element={<ScanHistory />}
                             />
                             <Route
-                                path="/generate-history"
+                                path="/react-qr/generate-history"
                                 element={<GenerateHistory />}
                             />
                         </Routes>
